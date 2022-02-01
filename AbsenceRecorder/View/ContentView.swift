@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    var divisions : [division]
+    
+    @EnvironmentObject var state : stateController
     @State private var currentDate : Date = Date()
     
     
     
     var body: some View {
         NavigationView{
-            List(divisions, id : \.self.code){ division in
-                DivisionItem(division: division)
+            List(state.divisions, id : \.self.code){ division in
+                NavigationLink(destination: AbsenceView(division: division)){
+                    DivisionItem(division: division)
+                }
+                
+               
             }
             .navigationTitle(currentDate.getShortDate())
             .toolbar{
@@ -41,6 +46,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(divisions: division.example)
+        ContentView()
+            .environmentObject(stateController())
     }
 }

@@ -29,7 +29,7 @@ class division{
     }
     static let example = [division.createDivison(code: "qwe", of: 1),
                           division.createDivison(code: "asd", of: 2),
-                          division.createDivison(code: "cvb", of: 9)]
+                          division.createDivison(code: "cvb", of: 3)]
    
                         
     #endif
