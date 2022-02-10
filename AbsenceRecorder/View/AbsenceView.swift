@@ -9,15 +9,19 @@ import SwiftUI
 
 struct AbsenceView: View {
     
-    let division : division
+    let absence: Absence
     
     var body: some View {
-        Text("Absence View - \(division.code)")
+        List(absence.studentAbsences, id: \.self.student.firstName){ StudentAbsence in
+            absenceitem(studentAbsence: StudentAbsence)
+        }
+        
     }
 }
 
 struct AbsenceView_Previews: PreviewProvider {
     static var previews: some View {
-        AbsenceView(division: division.example[0])
+        AbsenceView(absence: Absence.example)
     }
 }
+
